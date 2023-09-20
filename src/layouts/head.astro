@@ -1,0 +1,166 @@
+---
+import Html from "./html.astro";
+let user = Astro.cookies.get("user");
+---
+
+<Html>
+    <div class="flex items-center justify-between border p-3">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 100"
+            width="38"
+            height="38"
+            ><path
+                fill="#ee4267"
+                d="M39,53L39,53c4.418,0,8,3.582,8,8v18c0,4.418-3.582,8-8,8h0c-4.418,0-8-3.582-8-8V61 C31,56.582,34.582,53,39,53z"
+            ></path><path
+                fill="#8cc78c"
+                d="M59,13L59,13c4.418,0,8,3.582,8,8v18c0,4.418-3.582,8-8,8h0c-4.418,0-8-3.582-8-8V21 C51,16.582,54.582,13,59,13z"
+            ></path><path
+                fill="#31c4f3"
+                d="M47,41L47,41c0,4.418-3.582,8-8,8H21c-4.418,0-8-3.582-8-8v0c0-4.418,3.582-8,8-8h18 C43.418,33,47,36.582,47,41z"
+            ></path><path
+                fill="#ead032"
+                d="M85,59L85,59c0,4.418-3.582,8-8,8H59c-4.418,0-8-3.582-8-8v0c0-4.418,3.582-8,8-8h18 C81.418,51,85,54.582,85,59z"
+            ></path><path
+                fill="#ead032"
+                d="M59,87L59,87c-4.418,0-8-3.582-8-8v-8h8c4.418,0,8,3.582,8,8v0C67,83.418,63.418,87,59,87z"
+            ></path><path
+                fill="#ee4267"
+                d="M19,69L19,69c-4.418,0-8-3.582-8-8v0c0-4.418,3.582-8,8-8h8v8C27,65.418,23.418,69,19,69z"
+            ></path><path
+                fill="#8cc78c"
+                d="M79,47h-8v-8c0-4.418,3.582-8,8-8h0c4.418,0,8,3.582,8,8v0C87,43.418,83.418,47,79,47z"
+            ></path><path
+                fill="#31c4f3"
+                d="M47,29h-8c-4.418,0-8-3.582-8-8v0c0-4.418,3.582-8,8-8h0c4.418,0,8,3.582,8,8V29z"
+            ></path><path
+                fill="#1f212b"
+                d="M39,88c-4.962,0-9-4.038-9-9V61c0-4.962,4.038-9,9-9s9,4.038,9,9v18C48,83.962,43.962,88,39,88z M39,54c-3.86,0-7,3.14-7,7v18c0,3.86,3.14,7,7,7s7-3.14,7-7V61C46,57.14,42.86,54,39,54z"
+            ></path><path
+                fill="#1f212b"
+                d="M59,48c-4.962,0-9-4.038-9-9V21c0-4.962,4.038-9,9-9s9,4.038,9,9v18C68,43.962,63.962,48,59,48z M59,14c-3.86,0-7,3.14-7,7v18c0,3.86,3.14,7,7,7s7-3.14,7-7V21C66,17.14,62.86,14,59,14z"
+            ></path><path
+                fill="#1f212b"
+                d="M39,50H21c-4.962,0-9-4.038-9-9s4.038-9,9-9h18c4.962,0,9,4.038,9,9S43.962,50,39,50z M21,34 c-3.86,0-7,3.14-7,7s3.14,7,7,7h18c3.86,0,7-3.14,7-7s-3.14-7-7-7H21z"
+            ></path><path
+                fill="#1f212b"
+                d="M77,68H59c-4.962,0-9-4.038-9-9s4.038-9,9-9h18c4.962,0,9,4.038,9,9S81.962,68,77,68z M59,52 c-3.86,0-7,3.14-7,7s3.14,7,7,7h18c3.86,0,7-3.14,7-7s-3.14-7-7-7H59z"
+            ></path><path
+                fill="#1f212b"
+                d="M59,88c-4.962,0-9-4.038-9-9v-8c0-0.552,0.448-1,1-1h8c4.962,0,9,4.038,9,9S63.962,88,59,88z M52,72v7c0,3.86,3.14,7,7,7s7-3.14,7-7s-3.14-7-7-7H52z"
+            ></path><path
+                fill="#1f212b"
+                d="M19,70c-4.962,0-9-4.038-9-9s4.038-9,9-9h8c0.552,0,1,0.448,1,1v8C28,65.962,23.962,70,19,70z M19,54c-3.86,0-7,3.14-7,7s3.14,7,7,7s7-3.14,7-7v-7H19z"
+            ></path><path
+                fill="#1f212b"
+                d="M79,48h-8c-0.552,0-1-0.448-1-1v-8c0-4.962,4.038-9,9-9s9,4.038,9,9S83.962,48,79,48z M72,46h7 c3.86,0,7-3.14,7-7s-3.14-7-7-7s-7,3.14-7,7V46z"
+            ></path><path
+                fill="#1f212b"
+                d="M47,30h-8c-4.962,0-9-4.038-9-9s4.038-9,9-9s9,4.038,9,9v8C48,29.552,47.552,30,47,30z M39,14 c-3.86,0-7,3.14-7,7s3.14,7,7,7h7v-7C46,17.14,42.86,14,39,14z"
+            ></path></svg
+        >
+        <div class="flex items-center justify-between">
+            <a target="_blank" href={user?.json().logo}
+                ><img
+                    class="w-10 h-10 rounded-full"
+                    src={user?.json().logo}
+                    alt="Rounded avatar"
+                /></a
+            >
+            <div class="px-2"></div>
+            <button
+                id="logout"
+                type="button"
+                class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-1 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                    ></path>
+                </svg>
+
+                 Logout
+            </button>
+        </div>
+    </div>
+    <div class="flex">
+        <aside id="default-sidebar" class="w-64 h-screen" aria-label="Sidebar">
+            <div
+                class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800"
+            >
+                <ul class="space-y-2 font-medium">
+                    <li>
+                        <a
+                            href="/user"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                        >
+                            <svg
+                                class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
+                                viewBox="0 0 22 21"
+                            >
+                                <path
+                                    d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"
+                                ></path>
+                                <path
+                                    d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"
+                                ></path>
+                            </svg>
+                            <span class="ml-3">User</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/plots"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                        >
+                            <svg
+                                class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
+                                viewBox="0 0 18 18"
+                            >
+                                <path
+                                    d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"
+                                ></path>
+                            </svg>
+                            <span class="flex-1 ml-3 whitespace-nowrap"
+                                >Plots</span
+                            >
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <slot />
+    </div>
+    <script>
+        const button = document.getElementById("logout");
+        button && button.addEventListener("click", deleteAllCookies);
+        function deleteAllCookies() {
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i];
+                const eqPos = cookie.indexOf("=");
+                const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie =
+                    name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            location.reload();
+        }
+    </script>
+</Html>

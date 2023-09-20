@@ -1,0 +1,14 @@
+---
+import UserPage from "../components/user/user";
+import Head from "../layouts/head.astro";
+import Html from "../layouts/html.astro";
+
+const cookie = Astro.cookies.has("accessToken");
+if (!cookie) {
+    return Astro.redirect("/");
+}
+---
+
+<Html>
+    <Head><UserPage client:load /></Head>
+</Html>
