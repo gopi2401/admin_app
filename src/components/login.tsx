@@ -8,15 +8,15 @@ export default function Login() {
         try {
             const form = ev.target as HTMLFormElement;
             const formD = new FormData(form);
-            const response = await (await fetch('http://localhost:8080/verify', {
+            const response = await (await fetch('https://api.bookmyplots.co/verify', {
                 method: 'POST',
                 body: formD as FormData,
             })).json();
             if (response.status === 'success') {
                 localStorage.setItem("accessToken", response.accessToken);
-                // localStorage.setItem("user", JSON.stringify(response.data));
-                document.cookie = `accessToken=${response.accessToken};`;
-                document.cookie = `user=${JSON.stringify(response.data)};`;
+                localStorage.setItem("user", JSON.stringify(response.data));
+                // document.cookie = `accessToken=${response.accessToken};`;
+                // document.cookie = `user=${JSON.stringify(response.data)};`;
                 window.location.href = "/user";
             } else {
             }

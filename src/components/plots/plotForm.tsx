@@ -86,11 +86,11 @@ export default function PlotForm(props: any) {
                 }
             }
 
-            let url = 'http://localhost:8080/plots/create';
+            let url = 'https://api.bookmyplots.co/plots/create';
             let method = 'POST'
 
             if (plot) {
-                url = `http://localhost:8080/plots/edit/${plot.id}`;
+                url = `https://api.bookmyplots.co/plots/edit/${plot.id}`;
                 method = 'PUT'
             }
             const response = await (await fetch(url, {

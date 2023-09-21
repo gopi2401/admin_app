@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.2.0",
+    "@astrojs/node": "^6.0.0",
     "@astrojs/solid-js": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
     "@jop-software/astro-cookieconsent": "^1.0.2",

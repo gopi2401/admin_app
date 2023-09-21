@@ -7,7 +7,7 @@ export default function UserPage() {
     const [searchQuery, setSearchQuery] = createSignal('');
     const [users] = createResource(apiGet)
     async function apiGet() {
-        const response = await fetch('http://localhost:8080/users', {
+        const response = await fetch('https://api.bookmyplots.co/users', {
             method: 'GET',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')
@@ -17,7 +17,7 @@ export default function UserPage() {
         return data;
     }
     async function apiDelete(id: number) {
-        const response = await (await fetch(`http://localhost:8080/user/${id}`, {
+        const response = await (await fetch(`https://api.bookmyplots.co/user/${id}`, {
             method: 'DELETE',
         })).json();
         if (response.status === 'success') {
@@ -27,7 +27,7 @@ export default function UserPage() {
     async function apiActivityStatus(val: boolean, id: number) {
         const formData = new FormData();
         formData.append("isDeleted", val);
-        const response = await (await fetch(`http://localhost:8080/user/${id}`, {
+        const response = await (await fetch(`https://api.bookmyplots.co/user/${id}`, {
             method: 'PUT',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')

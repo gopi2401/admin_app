@@ -39,7 +39,7 @@ export default function UserForm(props: any) {
                 }
             }
             if (user) {
-                var response = await (await fetch(`http://localhost:8080/user/${user.id}`, {
+                var response = await (await fetch(`https://api.bookmyplots.co/user/${user.id}`, {
                     method: 'PUT',
                     headers: {
                         "authorization": "Bearer " + localStorage.getItem('accessToken')

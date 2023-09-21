@@ -1,6 +1,5 @@
 ---
 import Html from "./html.astro";
-let user = Astro.cookies.get("user");
 ---
 
 <Html>
@@ -61,13 +60,14 @@ let user = Astro.cookies.get("user");
             ></path></svg
         >
         <div class="flex items-center justify-between">
-            <a target="_blank" href={user?.json().logo}
+            <div id="usersrcurl"><div id="usersrcimg"></div></div>
+            <!-- <div id="usersrcurl" target="_blank"
                 ><img
                     class="w-10 h-10 rounded-full"
-                    src={user?.json().logo}
+                    src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
                     alt="Rounded avatar"
                 /></a
-            >
+            > -->
             <div class="px-2"></div>
             <button
                 id="logout"
@@ -148,19 +148,21 @@ let user = Astro.cookies.get("user");
         <slot />
     </div>
     <script>
-        const button = document.getElementById("logout");
-        button && button.addEventListener("click", deleteAllCookies);
-        function deleteAllCookies() {
-            const cookies = document.cookie.split(";");
-
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i];
-                const eqPos = cookie.indexOf("=");
-                const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-                document.cookie =
-                    name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        window.addEventListener("load", (event) => {
+            var x = localStorage.getItem("accessToken");
+            if (!x) {
+                window.location.href = "/";
             }
-            location.reload();
+        });
+        let user = JSON.parse(localStorage.getItem("user"));
+        document.getElementById(
+            "usersrcimg",
+        ).innerHTML = `<img class="w-10 h-10 rounded-full" src=${user.logo} />`;
+        const button = document.getElementById("logout");
+        button && button.addEventListener("click", deleteAlllocalStorage);
+        function deleteAlllocalStorage() {
+            localStorage.clear();
+            window.location.href = "/";
         }
     </script>
 </Html>

@@ -7,7 +7,7 @@ export default function PlotsPage() {
     const [searchQuery, setSearchQuery] = createSignal('');
     const [Plots] = createResource(apiGet);
     async function apiGet() {
-        const response = await fetch('http://localhost:8080/plots', {
+        const response = await fetch('https://api.bookmyplots.co/plots', {
             method: 'GET',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')
@@ -17,7 +17,7 @@ export default function PlotsPage() {
         return data.data;
     }
     async function apiDelete(id: number) {
-        const response = await (await fetch(`http://localhost:8080/plots/${id}`, {
+        const response = await (await fetch(`https://api.bookmyplots.co/plots/${id}`, {
             method: 'DELETE',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')
@@ -30,7 +30,7 @@ export default function PlotsPage() {
     async function apiActivityStatus(val: boolean, id: number) {
         const formData = new FormData();
         formData.append('isDeleted', val)
-        const response = await (await fetch(`http://localhost:8080/plots/edit/${id}`, {
+        const response = await (await fetch(`https://api.bookmyplots.co/plots/edit/${id}`, {
             method: 'PUT',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')
