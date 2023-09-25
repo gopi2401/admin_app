@@ -21,7 +21,7 @@ export default function PlotsPage() {
     }
     const [Plots, { mutate, refetch }] = createResource(apiGet);
     async function apiGet() {
-        const response = await fetch(`http://localhost:8080/plots?page=${currentPage()}`, {
+        const response = await fetch(`https://api.bookmyplots.co/plots?page=${currentPage()}`, {
             method: 'GET',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')
