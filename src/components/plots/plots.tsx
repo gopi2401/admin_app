@@ -5,15 +5,30 @@ export default function PlotsPage() {
     const [PlotBoolen, setPlotBoolen] = createSignal(false);
     const [plot, setPlot] = createSignal(null);
     const [searchQuery, setSearchQuery] = createSignal('');
-    const [Plots] = createResource(apiGet);
+    const [totalPages, setTotalPages] = createSignal(null);
+    const [currentPage, setCurrentPage] = createSignal(1);
+    const NextPage = () => {
+        if (currentPage() < totalPages()) {
+            setCurrentPage(currentPage() + 1)
+            refetch(Plots);
+        }
+    }
+    function PreviousPage() {
+        if (currentPage() != 1) {
+            setCurrentPage(currentPage() - 1)
+            refetch(Plots);
+        }
+    }
+    const [Plots, { mutate, refetch }] = createResource(apiGet);
     async function apiGet() {
-        const response = await fetch('https://api.bookmyplots.co/plots', {
+        const response = await fetch(`http://localhost:8080/plots?page=${currentPage()}`, {
             method: 'GET',
             headers: {
                 "authorization": "Bearer " + localStorage.getItem('accessToken')
             },
         });
         const data = await response.json();
+        setTotalPages(data.totalPages);
         return data.data;
     }
     async function apiDelete(id: number) {
@@ -63,6 +78,26 @@ export default function PlotsPage() {
             <div class='h-16 p-2 flex items-center justify-between'>
                 <div class='flex items-center ml-3'><input value={searchQuery()} onInput={(e) => setSearchQuery(e.target.value)} class='border p-2 w-96 rounded-lg mr-3' placeholder="Search..." type="text" />
                     <button onClick={() => location.reload()}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg></button>
+                </div>
+                <div class="flex items-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="flex items-center -space-x-px h-10 text-base">
+                            <li>
+                                <button onClick={() => PreviousPage()} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" ><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                                </svg></button>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{currentPage()}</a>
+                            </li>
+                            <li>
+                                <button onClick={() => NextPage()} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                </svg></button>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="ml-2 text-xl">Total Pages:{totalPages()}</div>
                 </div>
                 <div class='flex items-center'>
                     <button onClick={PlotModal} type="button" class="text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:ring-1 focus:ring-[#2557D6]/50 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#2557D6]/50">

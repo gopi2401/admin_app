@@ -101,7 +101,7 @@ export default function PlotForm(props: any) {
                 body: formD,
             })).json();
             if (response.status === 'success') {
-                props.onclose()
+                props.onclose();
             } else {
 
             }
@@ -175,6 +175,14 @@ export default function PlotForm(props: any) {
                             </div>
                         </header>
                         <div class='overflow-y-auto w-9/12'>
+                            <TextInput
+                                label="User ID"
+                                type='number'
+                                placeholder='enter user id'
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
+                                name="userId"
+                                formHandler={formHandler}
+                            />
                             <TextInput
                                 label="Plot Name"
                                 placeholder='Eg: Nagal Nagar Plot'
